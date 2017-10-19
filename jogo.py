@@ -1,7 +1,7 @@
 #Paranaues importantes
 import os
 import time
-
+#comentario bug
 #Variaveis globais
 empate = 0
 Novo_Jogo = 0
@@ -46,9 +46,9 @@ def tabuleiro (T):
 def verifica (T):
     global empate
     global end_game
-    empate += 1    
-    
-    
+    empate += 1
+
+
     #horizontal, mant_m linha, confere coluna
     vic = [True,True,True]
     a = ['']*3
@@ -73,8 +73,8 @@ def verifica (T):
                 elif count == 3:
                     count = 0
                     a = ['']*3
-                    
-    #vertical, mant_m coluna, confere linha                
+
+    #vertical, mant_m coluna, confere linha
     b = ['']*3
     count2 = 0
     for c in [2,8,14]:
@@ -97,7 +97,7 @@ def verifica (T):
                 elif count2 == 3:
                     count2 = 0
                     b = ['']*3
-    
+
     #Diagonal principal, linha e coluna tem o mesmo valor no jogo, mas n_o no programa.
     e = ['']*3
     count3 = 0
@@ -120,8 +120,8 @@ def verifica (T):
             elif count3 == 3:
                 count3 = 0
                 e = ['']*3
-      
-    
+
+
     #Diagonal secund_ria, linha e coluna n_o tem o mesmo valor no jogo, nem no programa.
     f = ['']*3
     count4 = 0
@@ -144,12 +144,12 @@ def verifica (T):
             elif count4 == 3:
                 count4 = 0
                 f = ['']*3
-                   
+
     #EMPATE, todas as casas preenchidas sem vit_ria
     if empate == 9:
             print 'JOGO EMPATADO'
             end_game = 1
-    
+
 
 
 def jogadas(xis):
@@ -160,21 +160,21 @@ def jogadas(xis):
     ajuste = []
     free_position = 0
     print 'Vez de %s \n' %(jogador[x])
-    
+
     while free_position == 0:
         for a in range(0,2):
             w = 0
-            while w == 0: 
+            while w == 0:
 		while True:
-			try:	
-				input_lc = int(raw_input('Digite o numero da %s _1_2_3\n'  %(s[a].lower()))) 
+			try:
+				input_lc = int(raw_input('Digite o numero da %s _1_2_3\n'  %(s[a].lower())))
 				break
 			except ValueError:
 				print 'Escolha invalida, digite um numero de 1 a 3'
-				time.sleep(1)				
+				time.sleep(1)
 				tabuleiro(T)
                 if input_lc == 1:
-                    
+
 		    teste = 1
                     if teste == 1: #teste de linha/coluna cheia
                         d=[' ']*3
@@ -249,7 +249,7 @@ def jogadas(xis):
                             elif a == 1:
                                 c = 14
                                 w = 1
-                 
+
                 else:
                     print 'Jogada Invalida'
                     w = 0
@@ -260,7 +260,7 @@ def jogadas(xis):
                 tabuleiro(T)
                 free_position = 1
                 x = 1
-            elif x == 1:    
+            elif x == 1:
                 T[l][c] = 'X'
                 tabuleiro(T)
                 free_position = 1
@@ -296,24 +296,24 @@ while sacanagem == 1:
 		for limpa2 in [2,8,14]:
 			T[limpa][limpa2] = ' '
 	    os.system('clear')
-	    tabuleiro(T)		
+	    tabuleiro(T)
             sacanagem2 = 1
             while sacanagem2 == 1:
                 player = str(raw_input('Qual jogador vai iniciar? X ou O\n')).lower()
-                
+
 		if player == 'x':
                     x = 1
                     sacanagem2 = 0
-		    end_game = 0	
+		    end_game = 0
                 elif player == 'o':
                     x = 0
                     sacanagem2 = 0
-		    end_game = 0	
+		    end_game = 0
                 else:
                     sacanagem2=1
                     print'Escolha invAlida. X ou O\n'
                     tabuleiro(T)
-            
+
         elif NG == 'n':
             print 'Good Bye!!'
             end_game = 1
@@ -325,7 +325,7 @@ while sacanagem == 1:
             tabuleiro(T)
 
         while end_game == 0:
-            jogadas(x)        
+            jogadas(x)
             verifica(T)
             time.sleep(1)
             sacanagem = 1
